@@ -7,10 +7,34 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>Ladies Choice BD</h1>
-    <p>Your Destination for Elegant Fashion</p>
-  </header>
+
+    <!-- ========== Header / Navigation ========== -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">
+      <img src="logo.png" alt="Ladies Choice BD" class="logo-img">
+      <span class="brand">Ladies Choice BD</span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span class="hamburger"></span>
+    </button>
+
+    <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+      <ul class="nav-list">
+        <li><a href="/">Home</a></li>
+        <li><a href="#categories">Categories</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li class="nav-cta"><a href="#products" class="btn-shop">Shop Now</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<!-- ========== End Header ========== -->
+
 
   <section class="hero">
     <h2>Trendy Styles for Every Woman</h2>
@@ -38,5 +62,30 @@
   <footer>
     <p>© 2025 Ladies Choice BD | All Rights Reserved</p>
   </footer>
+
+
+  <script>
+  // Simple nav toggle for mobile
+  (function(){
+    const btn = document.getElementById('navToggle');
+    const nav = document.getElementById('mainNav');
+
+    if (!btn || !nav) return;
+
+    btn.addEventListener('click', function() {
+      const expanded = this.getAttribute('aria-expanded') === 'true' || false;
+      this.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('open');
+    });
+
+    // Optional: close nav when clicking outside (mobile)
+    document.addEventListener('click', function(e) {
+      if (!nav.classList.contains('open')) return;
+      const inside = nav.contains(e.target) || btn.contains(e.target);
+      if (!inside) nav.classList.remove('open'), btn.setAttribute('aria-expanded','false');
+    });
+  })();
+  </script>
 </body>
+  
 </html>
